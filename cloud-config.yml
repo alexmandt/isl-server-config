@@ -29,10 +29,4 @@ runcmd:
     - sed -i '$a AllowUsers develop' /etc/ssh/sshd_config
     # Install Mamba forge
     - reboot
-
-ansible:
-  install_method: pip
-  pull:
-    url: "https://github.com/alexmandt/isl-server-config.git"
-    playbook_name: "docker-install-playbook.yaml"
     
