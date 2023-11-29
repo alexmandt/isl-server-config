@@ -1,0 +1,26 @@
+---
+- hosts: localhost
+  become: true
+  name: Basic Server Setup for Hetzner Cloud Servers
+  tasks:
+    - name: Add Default User
+      ansible.builtin.user:
+        name: develop
+        state: present
+	create_home: yes
+        shell: /bin/bash
+    - name: Set authorized keys for default user
+      ansible.posix.authorize_key:
+        user: develop
+        state: present
+        key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILmtfQmqpWDOf5qz64pNpOkT4bFanlzGXlCJ4t4OcTXa alexandermandt@alexanders-macbook-pro.home"
+    	
+    - name: Set passwordless sudo for default user
+      ansible.builtin.lineinfile:
+        path: /etc/sudoers
+        state: present
+	regexp: '^develop '
+  	line: 'develop ALL=(ALL) NOPASSWD: ALL'
+	validate: '/usr/sbin/visudo -cf %s'
+	
+ 
