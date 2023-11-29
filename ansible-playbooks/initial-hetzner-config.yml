@@ -1,28 +1,25 @@
 ---
-- hosts: localhost
-  connection: local
-  become: true
-  name: Basic Server Setup for Hetzner Cloud Servers
+- hosts: "localhost"
+  connection: "local"
+  become: yes
+  name: "Setup Default User"
   tasks:
-    - name: Add Default User
+    - name: "Add default user"
       ansible.builtin.user:
         name: develop
         state: present
         create_home: yes
-        shell: /bin/bash
+        shell: "/bin/bash"
     
-    - name: Set authorized keys for default user
+    - name: "Set authorized keys for default user"
       ansible.posix.authorize_key:
         user: develop
         state: present
-        key: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILmtfQmqpWDOf5qz64pNpOkT4bFanlzGXlCJ4t4aOcTXa'
-
-    - name: Set passwordless sudo for default user
+        key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILmtfQmqpWDOf5qz64pNpOkT4bFanlzGXlCJ4t4OcTXa alexandermandt@alexanders-macbook-pro.home"
+    - name: "Set passwordless sudo for default user"
       ansible.builtin.lineinfile:
-        path: /etc/sudoers
+        path: "/etc/sudoers"
         state: present
-        regexp: '^develop '
-        line: 'develop ALL=(ALL) NOPASSWD: ALL'
-        validate: '/usr/sbin/visudo -cf %s'
-  
- 
+        regexp: "^develop "
+        line: "develop ALL=(ALL) NOPASSWD: ALL"
+        validate: "/usr/sbin/visudo -cf %s"
