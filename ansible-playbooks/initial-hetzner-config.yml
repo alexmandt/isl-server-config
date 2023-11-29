@@ -1,5 +1,6 @@
 ---
 - hosts: localhost
+  connection: local
   become: true
   name: Basic Server Setup for Hetzner Cloud Servers
   tasks:
