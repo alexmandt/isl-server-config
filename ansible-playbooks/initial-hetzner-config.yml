@@ -12,7 +12,7 @@
         shell: "/bin/bash"
     
     - name: "Set authorized keys for default user"
-      ansible.posix.authorize_key:
+      ansible.posix.authorized_key:
         user: develop
         state: present
         key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILmtfQmqpWDOf5qz64pNpOkT4bFanlzGXlCJ4t4OcTXa alexandermandt@alexanders-macbook-pro.home"
