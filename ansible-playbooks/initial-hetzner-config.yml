@@ -10,6 +10,7 @@
         state: present
         create_home: yes
         shell: /bin/bash
+    
     - name: Set authorized keys for default user
       ansible.posix.authorize_key:
         user: develop
