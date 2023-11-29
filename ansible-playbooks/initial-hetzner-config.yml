@@ -14,7 +14,7 @@
       ansible.posix.authorize_key:
         user: develop
         state: present
-        key: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILmtfQmqpWDOf5qz64pNpOkT4bFanlzGXlCJ4t4aOcTXa alexandermandt@alexanders-macbook-pro.home'
+        key: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILmtfQmqpWDOf5qz64pNpOkT4bFanlzGXlCJ4t4aOcTXa'
     	
     - name: Set passwordless sudo for default user
       ansible.builtin.lineinfile:
