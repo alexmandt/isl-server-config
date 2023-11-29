@@ -7,7 +7,7 @@
       ansible.builtin.user:
         name: develop
         state: present
-	create_home: yes
+	    create_home: yes
         shell: /bin/bash
     - name: Set authorized keys for default user
       ansible.posix.authorize_key:
@@ -19,8 +19,8 @@
       ansible.builtin.lineinfile:
         path: /etc/sudoers
         state: present
-	regexp: '^develop '
-  	line: 'develop ALL=(ALL) NOPASSWD: ALL'
-	validate: '/usr/sbin/visudo -cf %s'
+	    regexp: '^develop '
+  	    line: 'develop ALL=(ALL) NOPASSWD: ALL'
+	    validate: '/usr/sbin/visudo -cf %s'
 	
  
